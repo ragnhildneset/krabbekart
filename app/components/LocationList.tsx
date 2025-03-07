@@ -1,4 +1,10 @@
 import { getLocations } from "@/app/sanity";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Location } from "@/types";
 
 export default async function LocationList() {
@@ -13,10 +19,12 @@ export default async function LocationList() {
     return (
       <div className="grid gap-4 p-4">
         {locations.map((location: Location) => (
-          <div key={location._id} className="p-4 border rounded-lg shadow-sm">
-            <h2 className="text-xl font-semibold">{location.name}</h2>
-            <p className="text-gray-600">{location.description}</p>
-          </div>
+          <Card key={location._id}>
+            <CardHeader>
+              <CardTitle>{location.name}</CardTitle>
+              <CardDescription>{location.description}</CardDescription>
+            </CardHeader>
+          </Card>
         ))}
       </div>
     );
