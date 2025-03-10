@@ -6,6 +6,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Location } from "@/types";
+import Map from "./Map";
 
 export default async function LocationList() {
   try {
@@ -17,15 +18,18 @@ export default async function LocationList() {
     }
 
     return (
-      <div className="grid gap-4 p-4">
-        {locations.map((location: Location) => (
-          <Card key={location._id}>
-            <CardHeader>
-              <CardTitle>{location.name}</CardTitle>
-              <CardDescription>{location.description}</CardDescription>
-            </CardHeader>
-          </Card>
-        ))}
+      <div className="space-y-6">
+        <Map locations={locations} />
+        <div className="grid gap-4 p-4">
+          {locations.map((location: Location) => (
+            <Card key={location._id}>
+              <CardHeader>
+                <CardTitle>{location.name}</CardTitle>
+                <CardDescription>{location.description}</CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
       </div>
     );
   } catch (error) {

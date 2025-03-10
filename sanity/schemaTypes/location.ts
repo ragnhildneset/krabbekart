@@ -20,5 +20,11 @@ export default {
         type: "text",
         validation: (Rule : Rule) => Rule.max(500),
       },
+      {
+        name: "coordinates",
+        title: "Coordinates",
+        type: "geopoint",
+        validation: (Rule : Rule) => Rule.required(),
+      },
     ],
   };
